@@ -33,6 +33,20 @@ namespace Full_GRASP_And_SOLID.Library
                 Console.WriteLine($"{step.Quantity} de '{step.Input.Description}' " +
                     $"usando '{step.Equipment.Description}' durante {step.Time}");
             }
+            result = result + $"Costo de producción: {this.GetProductionCost()}";
+
+            return result;
+
         }
+        public double GetProductionCost()
+        {
+            double result = 0;
+
+            foreach (Step step in this.steps)
+            {
+                result = result + step.GetStepCost();
+            }
+            return result;
+        }       
     }
 }
